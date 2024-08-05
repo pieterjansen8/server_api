@@ -55,7 +55,7 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if button_rect.collidepoint(mouse_pos):
                     create_game = networkcontroller.network_controller.create_game()
-                    print("game started:", create_game)
+                    print("game started, game_id:", create_game)
                     exit()
 
         # Update display
