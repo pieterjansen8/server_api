@@ -32,22 +32,16 @@ text_rect = text.get_rect(center=button_rect.center)
 
 def main_menu():
     while True:
-        # Draw the background image
         screen.blit(background_image, (0, 0))
 
-        # Get mouse position
         mouse_pos = pygame.mouse.get_pos()
-
-        # Check if mouse is over the button and draw it
         if button_rect.collidepoint(mouse_pos):
             pygame.draw.rect(screen, button_hover_color, button_rect)
         else:
             pygame.draw.rect(screen, button_color, button_rect)
 
-        # Draw text
         screen.blit(text, text_rect)
 
-        # Event handling
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -55,10 +49,9 @@ def main_menu():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if button_rect.collidepoint(mouse_pos):
                     create_game = networkcontroller.network_controller.create_game()
-                    print("game started, game_id:", create_game, "game url: https://test-fac11-default-rtdb.europe-west1.firebasedatabase.app/"+create_game+".json")
+                    print("game started, game_id:", create_game, "game url: https://test-fac11-default-rtdb.europe-west1.firebasedatabase.app/"+str(create_game)+".json")
                     exit()
 
-        # Update display
         pygame.display.flip()
 
 if __name__ == "__main__":
